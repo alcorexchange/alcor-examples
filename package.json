@@ -1,0 +1,19 @@
+{
+  "name": "alcor-examples",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Runnable examples for Alcor: deposit addresses, sign-up by deposit, swapping addresses, transfer streams, light clients",
+  "license": "MIT",
+  "type": "module",
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@wharfkit/antelope": "^1.0.13"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}
