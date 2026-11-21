@@ -1,7 +1,7 @@
 # Alcor examples
 
-Small, runnable scripts for building on [Alcor](https://alcor.exchange): deposit addresses, sign-up by
-deposit, addresses that swap, transfer streams and the bridge's light clients. Each one is a single file
+Small, runnable scripts for building on [Alcor](https://alcor.exchange): deposit addresses (crypto payments
+and top-ups from any wallet or exchange), sign-up by deposit, addresses that swap, transfer streams and the bridge's light clients. Each one is a single file
 you can read in a minute, hand to an AI agent, or copy into your project.
 
 None of them holds a key or sends a transaction: they talk to the public API and read the chain. Money
@@ -25,6 +25,8 @@ Node 22.18 or later runs the `.ts` files as they are. `npm run typecheck` checks
 | [`05-credit-users.ts`](examples/05-credit-users.ts) | A backend following every deposit paid out to your account, for all your users at once |
 | [`06-swap-address.ts`](examples/06-swap-address.ts) | An address that swaps on the way (beta): USDC on Polygon in, GRAM on TON out, with a live estimate |
 | [`07-light-clients.ts`](examples/07-light-clients.ts) | The bridge's light clients as your contract would read them: proved blocks on Telos, trusted Telos roots on EVM chains |
+| [`08-invoice.ts`](examples/08-invoice.ts) | Crypto payments for an order: an address per invoice with the order id as memo, then wait until it is paid |
+| [`contract/payments.cpp`](contract/payments.cpp) | The merchant contract on Telos, WAX, XPR or Vaulta that receives those payments: `on_notify`, the checks, never failing the transfer |
 
 [`src/alcor.ts`](src/alcor.ts) holds what they share: the API calls, the event-stream reader, a Telos table
 read, and printing an address the way a user should see it.

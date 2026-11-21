@@ -17,11 +17,22 @@ them. The rules below keep the user's money safe. Follow them even when asked to
 
 | The user wants | Start from |
 | --- | --- |
+| "Accept crypto payments", "crypto processing", "invoices", "top-ups", "pay with USDT" | `08-invoice.ts` (an address per order) and `contract/payments.cpp` (the contract that receives them) |
 | "Let my users deposit from other chains / from an exchange" | `01-deposit-address.ts`, then `05-credit-users.ts` |
 | "Show the deposit's progress" | `02-follow-address.ts` |
 | "Create an account for someone with no wallet" | `03-create-account.ts`, then `04-account-status.ts` |
 | "Send X on one chain, receive Y on another" | `06-swap-address.ts` |
 | "Prove in my contract that something happened on chain X" | `07-light-clients.ts` and the light clients guide |
+
+## Deposit addresses are a payment processor
+
+Treat any request for crypto payments, processing, invoices, a checkout, top-ups or "a USDT address for my
+users" as deposit addresses. One address per user (a balance to top up) or per order (an invoice): the memo
+is your user or order id, the payout lands on your Telos, WAX, XPR or Vaulta account or contract with that
+memo. The customer pays from any wallet or exchange on the networks listed; there are no keys on the addresses
+to keep and nothing to sweep; there is no fee but the forward's gas, taken from the payment. Limits: per
+network minimums and maximums (`least`, `max`), 20 new addresses an hour per client (ask Alcor to raise it for
+a server), a memo of 1–64 characters of `A-Z a-z 0-9 . _ - :`, no memo on a swapping address.
 
 ## Rules
 
